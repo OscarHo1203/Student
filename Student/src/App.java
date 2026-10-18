@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Locale;
-
+import java.util.Random;
 public class App {
     public static class Student {
         public int id;
@@ -15,7 +15,7 @@ public class App {
 
     static ArrayList<Student> studentList = new ArrayList<>();
     static Scanner globalScanner = new Scanner(System.in).useLocale(Locale.US);
-
+    static Random r = new Random();
     public static void greet() {
         System.out.println("\n===== STUDENT PERFORMANCE TRACKER =====");
         System.out.println("1. Register student");
@@ -95,11 +95,11 @@ public class App {
                 System.out.println("Very Bad!");
             } else if(s.gpa > 0.0 && s.gpa < 1.0){
                 System.out.println("Bad!");
-            } else if(s.gpa > 1.0 && s.gpa > 2.0){
+            } else if(s.gpa >= 1.0 && s.gpa < 2.0){
                 System.out.println("Average");
-            } else if(s.gpa > 2.0 && s.gpa < 3.0){
+            } else if(s.gpa >= 2.0 && s.gpa < 3.0){
                 System.out.println("Good");
-            } else if(s.gpa > 3.0 && s.gpa < 4.0){
+            } else if(s.gpa >= 3.0 && s.gpa < 4.0){
                 System.out.println("Very good!");
             } else if(s.gpa == 4.0){
                 System.out.println("Perfect!");
@@ -108,12 +108,27 @@ public class App {
         }
     }
 
+    public static void randomScore(){
+        if(studentList.size() == 0){
+            System.err.println("No student. Please input first");
+            return;
+        }
+        for (int i = 0; i < studentList.size(); i++) {
+            int mathScore = r.nextInt(100);
+            int physics = r.nextInt(100);
+            System.out.printf("Student %d's score = %n", i+1);
+            System.out.printf("Math: %d%n", mathScore);
+            System.out.printf("Physics: %d%n", physics);
+            System.out.println("-----------------------------------------");
+        }
+    }
+
     public static void process(int choice) {
         switch (choice) {
             case 1: RegisterStudent(); break;
             case 2: ViewProfile(); break;
-            case 3: scoreStats();; break;
-            case 4: System.out.println("Option 4 coming soon!"); break;
+            case 3: scoreStats(); break;
+            case 4: randomScore(); break;
             case 5: System.out.println("Exiting tracker..."); break;
         }
     }
