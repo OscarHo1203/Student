@@ -1,6 +1,7 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class App {
-    class Student{
+    public static class Student{
         public int id;
         public String name;
         public int age;
@@ -20,7 +21,7 @@ public class App {
 
     }
 
-    
+    ArrayList<Student> studentList = new ArrayList<>();
     public static void greet(){
         System.out.println("===== STUDENT PERFORMANCE TRACKER =====");
         System.out.println("1. Register student");
@@ -54,7 +55,22 @@ public class App {
     }
 
     public static void RegisterStudent(){
+        Scanner scanner = new Scanner(System.in);
+        Student newStudent = new Student();
+        System.out.print("Enter your name: ");
+        newStudent.name = scanner.nextLine();
         
+        System.out.print("Enter your age: ");
+        newStudent.age = scanner.nextInt();
+
+        System.out.print("Enter your id: ");
+        newStudent.id = scanner.nextInt();
+
+        System.out.print("Enter your gpa: ");
+        newStudent.gpa = scanner.nextFloat();
+
+        System.out.print("Enter your age: ");
+        newStudent.age = scanner.nextInt();
     }
     public static void process(int choice){
         switch(choice){
