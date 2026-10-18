@@ -21,7 +21,7 @@ public class App {
 
     }
 
-    ArrayList<Student> studentList = new ArrayList<>();
+    static ArrayList<Student> studentList = new ArrayList<>();
     public static void greet(){
         System.out.println("===== STUDENT PERFORMANCE TRACKER =====");
         System.out.println("1. Register student");
@@ -69,13 +69,21 @@ public class App {
         System.out.print("Enter your gpa: ");
         newStudent.gpa = scanner.nextFloat();
 
-        System.out.print("Enter your age: ");
-        newStudent.age = scanner.nextInt();
+        while(newStudent.gpa < 0.0 || newStudent.gpa > 4.0){
+            System.out.println("GPA Should be within 0.0 and 4.0");
+            System.out.print("Enter your gpa: ");
+            newStudent.gpa = scanner.nextFloat();
+        }
+        newStudent.activeStatus = 1;
+        studentList.add(newStudent);
+        System.out.println("Student registered successfully!");
+
+        scanner.close();  
     }
     public static void process(int choice){
         switch(choice){
             case 1:
-                //RegisterStudent()
+                RegisterStudent();
             case 2:
                 //ViewProfile()
             case 3:
