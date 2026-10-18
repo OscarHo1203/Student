@@ -1,11 +1,11 @@
 import java.util.Scanner;
 public class App {
     class Student{
-        private int id;
-        private String name;
-        private int age;
-        private float gpa;
-        private int activeStatus;
+        public int id;
+        public String name;
+        public int age;
+        public float gpa;
+        public int activeStatus;
 
         public Student(){
         }
@@ -18,37 +18,6 @@ public class App {
             this.activeStatus = activeStatus;
         }
 
-        public String getName(){
-            return name;
-        }
-
-        public void setName(String name){
-            this.name = name;
-        }
-
-        public int getAge(){
-            return age;
-        }
-
-        public void setAge(int age){
-            this.age = age;
-        }
-
-        public float getGPA(){
-            return gpa;
-        }
-
-        public void setGPA(float gpa){
-            this.gpa = gpa;
-        }
-
-        public int getID(){
-            return id;
-        }
-
-        public void setID(int id){
-            this.id = id;
-        }
     }
 
     
