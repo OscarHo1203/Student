@@ -40,7 +40,6 @@ public class App {
             }
             System.out.println("Invalid choice. please enter a number between 1 and 5, inclusive.");
         }
-        // NO scanner.close() here!
     }
 
     public static void RegisterStudent() {
@@ -68,8 +67,6 @@ public class App {
         newStudent.activeStatus = 1;
         studentList.add(newStudent);
         System.out.println("Student registered successfully!");
-        
-        // NO scanner.close() here!
     }
 
     public static void ViewProfile() {
@@ -86,11 +83,36 @@ public class App {
         }
     }
 
+    public static void scoreStats(){
+        if(studentList.size() == 0){
+            System.err.println("No student. Please input first");
+            return;
+        }
+        for (int i = 0; i < studentList.size(); i++) {
+            Student s = studentList.get(i);
+            System.out.printf("Student %d's score = ", i+1);
+            if(s.gpa == 0.0){
+                System.out.println("Very Bad!");
+            } else if(s.gpa > 0.0 && s.gpa < 1.0){
+                System.out.println("Bad!");
+            } else if(s.gpa > 1.0 && s.gpa > 2.0){
+                System.out.println("Average");
+            } else if(s.gpa > 2.0 && s.gpa < 3.0){
+                System.out.println("Good");
+            } else if(s.gpa > 3.0 && s.gpa < 4.0){
+                System.out.println("Very good!");
+            } else if(s.gpa == 4.0){
+                System.out.println("Perfect!");
+            }
+            System.out.println("-----------------------------------------");
+        }
+    }
+
     public static void process(int choice) {
         switch (choice) {
             case 1: RegisterStudent(); break;
             case 2: ViewProfile(); break;
-            case 3: System.out.println("Option 3 coming soon!"); break;
+            case 3: scoreStats();; break;
             case 4: System.out.println("Option 4 coming soon!"); break;
             case 5: System.out.println("Exiting tracker..."); break;
         }
@@ -102,12 +124,10 @@ public class App {
             greet();
             int userChoice = choice();
             process(userChoice);
-
             if (userChoice == 5) {
                 isRunning = false;
             }
         }
-
         globalScanner.close();
         System.out.println("Program Terminated.");
     }
